@@ -14,6 +14,7 @@ public class Beat : MonoBehaviour
     private bool gotScore = false;
     private ParticleEmitter particlerEmitter;
     private int emitterIdx;
+    private bool hit = false;
     void Start()
     {   
         // CHANGE IN FINAL IMPLEMENTATION
@@ -50,10 +51,11 @@ public class Beat : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
-                
-                // !!!!!!!!!!
-                ScoreManager.AddScore(scoreToAdd);
-                particlerEmitter.ChangeAndEmitParticle(emitterIdx);
+                if (!hit)
+                {
+                    ScoreManager.AddScore(scoreToAdd);
+                    particlerEmitter.ChangeAndEmitParticle(emitterIdx);
+                }
             }
         }
     }
@@ -64,7 +66,6 @@ public class Beat : MonoBehaviour
         if (!gotScore) {
             if (currentLayerTag == TAGInner)
             {
-                print("inner reached");
                 scoreToAdd = 0;
                 emitterIdx = 0;
             }
@@ -92,5 +93,6 @@ public class Beat : MonoBehaviour
         ScoreManager.AddScore(scoreToAdd);
         particlerEmitter.ChangeAndEmitParticle(emitterIdx);
         gameObject.SetActive(false);
+        hit = true;
     }
 }

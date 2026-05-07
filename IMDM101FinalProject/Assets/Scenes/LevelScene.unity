@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: 1371172521}
   beatPrefab: {fileID: 8139353244939965808, guid: 1f8d39654ea2a154cbb5e75b97c21f7d, type: 3}
   beatMapContainer: {fileID: 11400000, guid: a1e8fbfc7794cfd4ca39dc571f5dda72, type: 2}
-  song: {fileID: 0}
+  song: {fileID: 8300000, guid: 5d53c4a8d31d0a84e86fc3df500a653b, type: 3}
 --- !u!82 &148050172
 AudioSource:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 5d53c4a8d31d0a84e86fc3df500a653b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -830,7 +830,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -6483,7 +6483,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140853796}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7b903c285d2bd7a4ca4adf6ef544fe26, type: 2}
   m_CullingMode: 0
@@ -6832,7 +6832,7 @@ Transform:
   m_GameObject: {fileID: 1442895465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -7541,7 +7541,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1738368291
   m_SortingLayer: 8
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6190491281959881231, guid: 3ce3aa6dbd2664741aa20dd8167f779f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7561,13 +7561,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877278557}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.6121031, w: 0.7907779}
-  m_LocalPosition: {x: 0.25, y: 0.415, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.266, y: 0.401, z: 0}
   m_LocalScale: {x: 2, y: 2.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1140853799}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -75.483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &1877278560
 MonoBehaviour:
   m_ObjectHideFlags: 0

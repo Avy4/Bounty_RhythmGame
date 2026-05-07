@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c959ffff519fe64e9f5495714413c02, type: 3}
+  m_Name: TestMap
+  m_EditorClassIdentifier: Assembly-CSharp::BeatMap
+  beatMap:
+  - {fileID: 11400000, guid: 1939a4160ed6a8d47b67b7c0ea5dc971, type: 2}
+  - {fileID: 11400000, guid: 16784633a0ef37348806609ab7bbec0c, type: 2}
+  - {fileID: 11400000, guid: 4d3be09cd7a915745b6fb1f1dc5eff3b, type: 2}
+  - {fileID: 11400000, guid: d2c903b66d8fbc246a70a2a9c64aff1b, type: 2}
+  - {fileID: 11400000, guid: 1939a4160ed6a8d47b67b7c0ea5dc971, type: 2}
+  - {fileID: 11400000, guid: d2c903b66d8fbc246a70a2a9c64aff1b, type: 2}
+  - {fileID: 11400000, guid: 16784633a0ef37348806609ab7bbec0c, type: 2}
+  - {fileID: 11400000, guid: 02302b3f204aca94fbca5b9f19eb5fe7, type: 2}
+  - {fileID: 11400000, guid: 1939a4160ed6a8d47b67b7c0ea5dc971, type: 2}
+  - {fileID: 11400000, guid: d2c903b66d8fbc246a70a2a9c64aff1b, type: 2}
+  - {fileID: 11400000, guid: 16784633a0ef37348806609ab7bbec0c, type: 2}
+  - {fileID: 11400000, guid: 7e460069d550e944a89558fb0eca99b8, type: 2}
+  - {fileID: 11400000, guid: 4d3be09cd7a915745b6fb1f1dc5eff3b, type: 2}
+  timeBeforeStart: 1.5
+  spawnIntervalDefault: 1.55
+  beatSpeedDefault: 4
