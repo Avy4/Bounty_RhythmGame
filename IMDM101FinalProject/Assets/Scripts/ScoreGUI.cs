@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreGUI : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class ScoreGUI : MonoBehaviour
 
             if (healthSlider.fillAmount <= 0)
             {
-                Debug.Log("You Failed!");
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }
