@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styletemplate.css">
+    <style>
+        a {
+            color:rgb(213, 140, 224)
+        }
+    </style>
+    <title>Bounty - Rhythm Game</title>
+</head>
+<body class = "main">
+    <header>
+        <h1>
+            <span style="color: rgb(167, 63, 199);">Bounty</span>
+            -
+            <span style="color:rgb(213, 140, 224);">Rhythm Game</span>
+        </h1>
+    </header>
+    <br><hr><br>
+    <div>
+        <h3>Description</h3>
+        <p>In this rhythm game, you play as a hunter in a mystical forest. Shoot the bugs on beat to survive.</p>
+        <br>
+        <h3>Motivation</h3>
+        <p>IMDM101 Final group project, we wanted to create something that would let us express our creativity. This project was meant to be a somewhat large undertaking given the ~30 day timeline we had.</p>
+    </div>
+    <br><hr><br>
+    <div>
+        <h3>Project Documentation</h3>
+        <h4><a href="https://github.com/Avy4/IMDM101Bounty">GitHub Repository</a></h4>
+        <p>Code is commented and can be viewed in root/Assets/Scripts</p>
+        <br>
+
+        <h4>Audio:</h4>
+            <p>Section WIP</p>
+        <br>
+
+        <h4>Scene Setup:</h4>
+            <p>Section WIP</p>
+        <br>
+
+        <h4>Game Mechanics:</h4>
+        <ul>
+            <li>
+                <p>
+                    The current betmap implementation is through a "BeatObject" class. These are added to an array in the editor and then converted to a stack in the "BeatMap" script. Data from these "BeatObject" elements are then converted into a GameObject and instantiated.
+                </p>
+            </li>
+        </ul>
+        <br>
+
+        <h4>Problems Encountered:</h4>
+        <p>
+            Resolution was a big issue for us. The backgrounds create at first were not large enough, they then became too large. If we wanted to have a consistent screen size black bars would appear or we would need to cut off some of the scene.
+        </p>  
+    </div>
+
+    <br><hr><br>
+
+    <div>
+        <h3>Future Work</h3>
+        <ul>
+            <li>Revamp the beatmap creation system to be interactive (creation of beatmaps using buttons in its own scene rather than through the editor)</li>
+            <li>Adding more sound effects (hit sounds, menu button sounds, damage sounds)</li>
+            <li>Create more levels and increase gun mechanics (ammo counts/reload mechanic)</li>
+        </ul>
+    </div>
+
+    <br><hr><br>
+
+    <div>
+        <h3>Picture and Video Gallery</h3>
+        <img src="/images/mainMenuScene.png" alt="Picture of the Main Menu" width="1280" height="720">
+        <img src="/images/gameScene.png" alt="Picture of the Game Scene" width="1246" height="600">
+        <video width="1280" height="720" controls>
+            <source src="images/demo.mp4" type="video/mp4">
+        </video> 
+    </div>
+</body>
+</html>
