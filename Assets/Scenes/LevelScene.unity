@@ -5364,7 +5364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4, y: -6.600006}
+  m_AnchoredPosition: {x: 4, y: -6.5999756}
   m_SizeDelta: {x: 285, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &397027281
@@ -6201,7 +6201,7 @@ LineRenderer:
   m_Positions:
   - {x: -9.5, y: 1, z: 0}
   - {x: -8.5, y: 4, z: 0}
-  - {x: 5.5, y: 4, z: 0}
+  - {x: 3.5, y: 4, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -6748,7 +6748,7 @@ LineRenderer:
   m_Positions:
   - {x: -9.5, y: -1, z: 0}
   - {x: -8.5, y: -4, z: 0}
-  - {x: 5.5, y: -4, z: 0}
+  - {x: 3.5, y: -4, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -7414,7 +7414,7 @@ LineRenderer:
   m_Positions:
   - {x: -9, y: 1.5, z: 0}
   - {x: -6, y: 2.5, z: 0}
-  - {x: 8, y: 2.5, z: 0}
+  - {x: 6, y: 2.5, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -7662,6 +7662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHit
   delay: 20
+  characterAnimator: {fileID: 1140853797}
 --- !u!1 &1911013159
 GameObject:
   m_ObjectHideFlags: 0
@@ -7974,7 +7975,7 @@ LineRenderer:
   m_Positions:
   - {x: -9, y: 2.5, z: 0}
   - {x: -6, y: 1.5, z: 0}
-  - {x: 8, y: 1.5, z: 0}
+  - {x: 6, y: 1.5, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1

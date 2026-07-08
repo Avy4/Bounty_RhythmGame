@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c959ffff519fe64e9f5495714413c02, type: 3}
   m_Name: BeatMap
   m_EditorClassIdentifier: Assembly-CSharp::BeatMap
-  beatMap: []
+  beatMap:
+  - spawnLane: 0
+    timeBeforeSpawnNext: 0
+    beatSpeed: 1
+  - spawnLane: 2
+    timeBeforeSpawnNext: 0
+    beatSpeed: 2
+  - spawnLane: 1
+    timeBeforeSpawnNext: 0
+    beatSpeed: 2
+  - spawnLane: 3
+    timeBeforeSpawnNext: 0
+    beatSpeed: 2
   timeBeforeStart: 0.5
   spawnIntervalDefault: 0.5
   beatSpeedDefault: 3

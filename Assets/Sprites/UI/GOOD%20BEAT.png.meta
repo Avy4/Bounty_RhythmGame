@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: 6ad95cdd1a570a749b42297ca18fea9c
+guid: fa1232eb06e7c7248a3de705abc8bf41
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6840347477492179800
-    second: MISSED%20BEAT_0
+      213: -7205090982419049071
+    second: GOOD%20BEAT_0
   - first:
-      213: -1607593663711375999
-    second: MISSED%20BEAT_1
+      213: -1831891055752978839
+    second: GOOD%20BEAT_1
   - first:
-      213: -1472706927472215674
-    second: MISSED%20BEAT_2
+      213: -3523277178107609719
+    second: GOOD%20BEAT_2
   - first:
-      213: -3292584846086854214
-    second: MISSED%20BEAT_3
+      213: -2759864673398795418
+    second: GOOD%20BEAT_3
+  - first:
+      213: 8054475735339672059
+    second: GOOD%20BEAT_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,17 +121,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MISSED%20BEAT_0
+      name: GOOD%20BEAT_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 42
-        height: 55
+        y: 1
+        width: 41
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8acd6dff5343211a0800000000000000
-      internalID: -6840347477492179800
+      spriteID: 195da8afcef520c90800000000000000
+      internalID: -7205090982419049071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MISSED%20BEAT_1
+      name: GOOD%20BEAT_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
-        width: 8
-        height: 55
+        x: 42
+        y: 1
+        width: 47
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +175,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 18d805b841ea0b9e0800000000000000
-      internalID: -1607593663711375999
+      spriteID: 96ed0a26ac0d396e0800000000000000
+      internalID: -1831891055752978839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MISSED%20BEAT_2
+      name: GOOD%20BEAT_2
       rect:
         serializedVersion: 2
-        x: 65
+        x: 89
         y: 0
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98db7a9d21eca1fc0800000000000000
+      internalID: -3523277178107609719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GOOD%20BEAT_3
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6635ae1b3bdf2b9d0800000000000000
+      internalID: -2759864673398795418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GOOD%20BEAT_4
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 2
         width: 36
-        height: 55
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,30 +241,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 689f2c92ad4ef8be0800000000000000
-      internalID: -1472706927472215674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MISSED%20BEAT_3
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 0
-        width: 35
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ab9a82007836e42d0800000000000000
-      internalID: -3292584846086854214
+      spriteID: bf1ace0c10f37cf60800000000000000
+      internalID: 8054475735339672059
       vertices: []
       indices: 
       edges: []
@@ -223,10 +261,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MISSED%20BEAT_0: -6840347477492179800
-      MISSED%20BEAT_1: -1607593663711375999
-      MISSED%20BEAT_2: -1472706927472215674
-      MISSED%20BEAT_3: -3292584846086854214
+      GOOD%20BEAT_0: -7205090982419049071
+      GOOD%20BEAT_1: -1831891055752978839
+      GOOD%20BEAT_2: -3523277178107609719
+      GOOD%20BEAT_3: -2759864673398795418
+      GOOD%20BEAT_4: 8054475735339672059
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

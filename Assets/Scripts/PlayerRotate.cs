@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,6 +27,7 @@ public class PlayerRotate : MonoBehaviour
 
         // Gets the new angle from the direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
         // Clamped so you can't look behind
         transform.rotation = Quaternion.Euler(0, 0, Math.Clamp(angle + startingRot, rotationLowerBound, rotationUpperBound));
     }
