@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class BeatObject
+public class BeatObjectSettings
 {
     private enum Lane: int {
         ONE = 0, TWO = 1, THREE = 2, FOUR = 3

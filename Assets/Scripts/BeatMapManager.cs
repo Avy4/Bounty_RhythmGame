@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BeatMapManager : MonoBehaviour
 {
@@ -14,8 +14,8 @@ public class BeatMapManager : MonoBehaviour
     private AudioSource audioPlayer;
 
     // The Actual BeatMap and the Queue
-    private BeatObject[] beatMap;
-    private Queue<BeatObject> beatMapQueue;
+    private BeatObjectSettings[] beatMap;
+    private Queue<BeatObjectSettings> beatMapQueue;
 
     // Timing Related BeatMap Settings
     private float introLength;
@@ -41,7 +41,7 @@ public class BeatMapManager : MonoBehaviour
             if (beatMap.Length > 0)
             {
                 // Conv the array to a queue.
-                beatMapQueue = new Queue<BeatObject>(beatMap); 
+                beatMapQueue = new Queue<BeatObjectSettings>(beatMap); 
             }
         }
 
@@ -78,7 +78,7 @@ public class BeatMapManager : MonoBehaviour
         if (!(beatMapQueue.Count == 0))
         {   
             // Get the current BeatObject
-            BeatObject currentBeatSetting = beatMapQueue.Dequeue();
+            BeatObjectSettings currentBeatSetting = beatMapQueue.Dequeue();
             
             // Get the LineRenderer (i.e the lane that the beat gets spawned on)
             int currentBeatLaneIdx = currentBeatSetting.GetLane();
