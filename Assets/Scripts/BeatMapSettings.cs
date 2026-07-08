@@ -1,37 +1,38 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BeatMap", menuName = "Scriptable Objects/BeatMap")]
-public class BeatMap : ScriptableObject
+[CreateAssetMenu(fileName = "BeatMapSettings", menuName = "Scriptable Objects/BeatMapSettings")]
+public class BeatMapSettings : ScriptableObject
 {
     [Header("Beatmap Settings")]
     // Where you actually make the beatmap. Its simply an array of BeatSetting objects. 
     // They get spawned in the lane that you choose one after another. 
-    [SerializeField] BeatSetting[] beatMap;
+    [SerializeField] BeatObject[] beatMap;
 
     [Tooltip("Time before the first note gets spawned")]
-    [SerializeField] float timeBeforeStart= .5f; 
+    [SerializeField] float introLength = 0f; 
     [Tooltip("Time interval between the spawns of each note after timeBeforeStart has elapsed")]
-    [SerializeField] float spawnIntervalDefault = .5f;
+    [SerializeField] float defaultSpawnInterval = .5f;
     [Tooltip("Speed of each beat")]
-    [SerializeField] float beatSpeedDefault = 3f;
+    [SerializeField] float defaultBeatSpeed = 3f;
+    [SerializeField] AudioClip song;
 
-    public BeatSetting[] GetBeatMap()
+    public BeatObject[] GetBeatMap()
     {
         return beatMap;
     }
 
-    public float GetTimeBeforeStart()
+    public float GetIntroLength()
     {
-        return timeBeforeStart;
+        return introLength;
     }
 
     public float GetSpawnInterval()
     {
-        return spawnIntervalDefault;
+        return defaultSpawnInterval;
     }
 
     public float GetBeatSpeed()
     {
-        return beatSpeedDefault;
+        return defaultBeatSpeed;
     }
 }

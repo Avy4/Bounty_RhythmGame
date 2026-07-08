@@ -304,7 +304,6 @@ MonoBehaviour:
   - {fileID: 1371172521}
   beatPrefab: {fileID: 8139353244939965808, guid: 1f8d39654ea2a154cbb5e75b97c21f7d, type: 3}
   beatMapContainer: {fileID: 11400000, guid: 3a0063a4f01ad4d45ac709f90b1f3896, type: 2}
-  song: {fileID: 8300000, guid: 5d53c4a8d31d0a84e86fc3df500a653b, type: 3}
 --- !u!82 &148050172
 AudioSource:
   m_ObjectHideFlags: 0

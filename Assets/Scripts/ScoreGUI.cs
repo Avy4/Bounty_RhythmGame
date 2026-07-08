@@ -10,6 +10,7 @@ public class ScoreGUI : MonoBehaviour
     const String comboTextName = "Combo"; 
     const String healthSliderName = "HealthBar";
     [SerializeField] int amountOfLives = 5;
+    private ScoreManager levelScoreManager;
     private TextMeshProUGUI scoreText;
     private TextMeshProUGUI comboText;
     private Image healthSlider;
@@ -19,14 +20,15 @@ public class ScoreGUI : MonoBehaviour
         scoreText = GameObject.Find(scoreTextName).GetComponent<TextMeshProUGUI>();
         comboText = GameObject.Find(comboTextName).GetComponent<TextMeshProUGUI>();
         healthSlider = GameObject.Find(healthSliderName).GetComponent<Image>();
+        levelScoreManager = GetComponent<ScoreManager>();
 
         SliderInit();
     }
 
     void Update()
     {
-        scoreText.text = ScoreManager.GetScore().ToString("D10");
-        comboText.text = ScoreManager.GetCombo().ToString("0000x");
+        scoreText.text = levelScoreManager.GetScore().ToString("D10");
+        comboText.text = levelScoreManager.GetCombo().ToString("0000x");
         CheckMissedBeat();
     }
 
@@ -35,15 +37,13 @@ public class ScoreGUI : MonoBehaviour
         healthSlider.fillMethod = Image.FillMethod.Horizontal;
         healthSlider.fillAmount = 1;
         decreasePct = 1f / amountOfLives;
-        Debug.Log(decreasePct);
     }
 
     void CheckMissedBeat()
     {
-        if (ScoreManager.GetMissedLastBeat())
+        if (levelScoreManager.GetMissedLastBeat())
        {   
-            Debug.Log("subtraced health");
-            ScoreManager.ResetMissedLastBeat();
+            levelScoreManager.ResetMissedLastBeat();
             healthSlider.fillAmount -= decreasePct;
             
 

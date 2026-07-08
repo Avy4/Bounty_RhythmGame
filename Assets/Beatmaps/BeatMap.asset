@@ -14,17 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeatMap
   beatMap:
   - spawnLane: 0
-    timeBeforeSpawnNext: 0
-    beatSpeed: 1
-  - spawnLane: 2
-    timeBeforeSpawnNext: 0
-    beatSpeed: 2
-  - spawnLane: 1
-    timeBeforeSpawnNext: 0
-    beatSpeed: 2
-  - spawnLane: 3
-    timeBeforeSpawnNext: 0
-    beatSpeed: 2
-  timeBeforeStart: 0.5
-  spawnIntervalDefault: 0.5
-  beatSpeedDefault: 3
+    individualSpawnInterval: 0
+    individualBeatSpeed: 0
+  introLength: 0
+  defaultSpawnInterval: 0.5
+  defaultBeatSpeed: 3
+  song: {fileID: 8300000, guid: 5d53c4a8d31d0a84e86fc3df500a653b, type: 3}

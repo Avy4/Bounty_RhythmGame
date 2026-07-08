@@ -1,38 +1,52 @@
 using System;
 using UnityEngine;
 
-public class Beat : MonoBehaviour
+public class BeatObjectManager : MonoBehaviour
 {   
-    const String TAGOuter = "Outer", TAGMiddle = "Middle", TAGInner = "Inner";
-    const String particleEmitterName = "Particle System";
+    // Variables to help with finding objects / that are objects
+    const String TAGOUTER = "Outer", TAGMIDDLE = "Middle", TAGINNER = "Inner";
+    const String PARTICLEEMITTERNAME = "Particle System";
+    private ParticleEmitter particlerEmitter;
+
+    // BeatObject Settings
     private float speed;
     private LineRenderer line;
+
+    // Movement Related Variables
     private Vector3[] lerpPoints;
     private Vector3 startingPos, nextPoint;
-    private int idx;
+    private int currentPointIdx;
+
+    // OnHit Related Variables
     private int scoreToAdd = 0;
     private bool gotScore = false;
-    private ParticleEmitter particlerEmitter;
-    private int emitterIdx;
     private bool hit = false;
+    private int emitterIdx;
+    
+    // Function that initializes speed and line from the BeatObject's individual values
+    public void Initialize(LineRenderer ln, float spd)
+    {
+        line = ln;
+        speed = spd;
+    }
     void Start()
     {   
-        // CHANGE IN FINAL IMPLEMENTATION
-        startingPos = line.transform.position;
+        // Object Innit
+        particlerEmitter = GameObject.Find(PARTICLEEMITTERNAME).GetComponent<ParticleEmitter>();    
 
-        // Need to create an array large enough to hold all the positions
+        // Need to create an array large enough to hold all the positions, fills that array with points
         lerpPoints = new Vector3[line.positionCount];
-
-        // Gets the positions of each point of the line
         line.GetPositions(lerpPoints);
 
+        // Set where in global space the actual line is. We use this to augment the position of the points.
+        startingPos = line.transform.position;
+
         // Init idx
-        idx = lerpPoints.Length - 1;
+        currentPointIdx = lerpPoints.Length - 1;
 
         // Set starting pos, sub idx by 1, set next pos, sub idx by 1
-        transform.position = lerpPoints[idx--] + startingPos;
-        nextPoint = lerpPoints[idx--] + startingPos;
-        particlerEmitter = GameObject.Find(particleEmitterName).GetComponent<ParticleEmitter>();
+        transform.position = lerpPoints[currentPointIdx--] + startingPos;
+        nextPoint = lerpPoints[currentPointIdx--] + startingPos;
     }
 
     void Update()
@@ -44,16 +58,16 @@ public class Beat : MonoBehaviour
         if (Vector3.Distance(transform.position, nextPoint) < .2)
         {   
             // Out of bounds check
-            if (idx >= 0)
+            if (currentPointIdx >= 0)
             {
-                nextPoint = lerpPoints[idx--] + startingPos;
+                nextPoint = lerpPoints[currentPointIdx--] + startingPos;
             }
             else
             {
                 gameObject.SetActive(false);
                 if (!hit)
                 {
-                    ScoreManager.AddScore(scoreToAdd);
+                    // ScoreManager.AddScore(scoreToAdd);
                     particlerEmitter.ChangeAndEmitParticle(emitterIdx);
                 }
             }
@@ -64,17 +78,17 @@ public class Beat : MonoBehaviour
     {   
         var currentLayerTag = collision.gameObject.tag;
         if (!gotScore) {
-            if (currentLayerTag == TAGInner)
+            if (currentLayerTag == TAGINNER)
             {
                 scoreToAdd = 0;
                 emitterIdx = 0;
             }
-            else if (currentLayerTag == TAGMiddle)
+            else if (currentLayerTag == TAGMIDDLE)
             {
                 scoreToAdd = 300;
                 emitterIdx = 1;
             }
-            else if (currentLayerTag == TAGOuter)
+            else if (currentLayerTag == TAGOUTER)
             {
                 scoreToAdd = 100;
                 emitterIdx = 2;
@@ -82,15 +96,10 @@ public class Beat : MonoBehaviour
         }   
     }
 
-    public void Initialize(LineRenderer ln, float spd)
-    {
-        line = ln;
-        speed = spd;
-    }
     public void HitObject()
     {
         gotScore = true;
-        ScoreManager.AddScore(scoreToAdd);
+        // ScoreManager.AddScore(scoreToAdd);
         particlerEmitter.ChangeAndEmitParticle(emitterIdx);
         gameObject.SetActive(false);
         hit = true;

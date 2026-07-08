@@ -1,32 +1,32 @@
 using System;
-
-public static class ScoreManager
+using UnityEngine;
+public class ScoreManager : MonoBehaviour
 {
-    private static int score = 0;
-    private static int combo = 0;
-    private static bool missedLastBeat = false;
+    private int score = 0;
+    private int combo = 0;
+    private bool missedLastBeat = false;
 
-    public static int GetScore()
+    public int GetScore()
     {
         return score;
     }
 
-    public static int GetCombo()
+    public int GetCombo()
     {
         return combo;
     }
 
-    public static bool GetMissedLastBeat()
+    public bool GetMissedLastBeat()
     {
         return missedLastBeat;
     }
 
-    public static void ResetMissedLastBeat()
+    public void ResetMissedLastBeat()
     {
         missedLastBeat = false;
     }
 
-    public static void AddScore(int addedScore)
+    public void AddScore(int addedScore)
     {
         if (addedScore == 300 || addedScore == 100)
         {

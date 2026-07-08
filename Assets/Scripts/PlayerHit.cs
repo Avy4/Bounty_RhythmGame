@@ -33,9 +33,7 @@ public class PlayerHit : MonoBehaviour
         GameObject hitObject = collision.gameObject;
         if (hitObject.CompareTag("Beat"))
         {
-            hitObject.GetComponent<Beat>().HitObject();
-            Debug.Log(ScoreManager.GetCombo());
-            Debug.Log(ScoreManager.GetScore());
+            hitObject.GetComponent<BeatObjectManager>().HitObject();
         }
     }
 }
