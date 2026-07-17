@@ -99,9 +99,13 @@ public class BeatObjectManager : MonoBehaviour
     public void HitObject()
     {
         gotScore = true;
-        // ScoreManager.AddScore(scoreToAdd);
         particlerEmitter.ChangeAndEmitParticle(emitterIdx);
         gameObject.SetActive(false);
         hit = true;
+    }
+
+    public int GetScoreToAdd()
+    {
+        return scoreToAdd;
     }
 }

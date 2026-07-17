@@ -5,6 +5,7 @@ public class PlayerHit : MonoBehaviour
 {
     [SerializeField] int delay = 20;
     [SerializeField] Animator characterAnimator;
+    [SerializeField] ScoreManager scoreManager;
 
     private bool initalClick = false;
     private CapsuleCollider2D beatDetectionCollider;
@@ -33,7 +34,12 @@ public class PlayerHit : MonoBehaviour
         GameObject hitObject = collision.gameObject;
         if (hitObject.CompareTag("Beat"))
         {
-            hitObject.GetComponent<BeatObjectManager>().HitObject();
+            BeatObjectManager manager = hitObject.GetComponent<BeatObjectManager>();
+
+            manager.HitObject();
+            scoreManager.AddScore(manager.GetScoreToAdd());
         }
     }
+
+    
 }

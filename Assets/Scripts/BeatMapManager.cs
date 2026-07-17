@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine.Rendering;
 
 public class BeatMapManager : MonoBehaviour
 {
@@ -7,11 +9,12 @@ public class BeatMapManager : MonoBehaviour
     [Header("Initialization")]
     [SerializeField] LineRenderer[] lanes;
     [SerializeField] GameObject beatPrefab;
-    [SerializeField] BeatMapSettings beatMapSettings;
+    [SerializeField] AudioSource audioPlayer;
 
-    // Audio Related Variables    
-    private AudioClip songToPlay;
-    private AudioSource audioPlayer;
+    // Variables
+    [SerializeField] BeatMapSettings beatMapSettings;
+    [SerializeField] string beatMapName;
+    
 
     // The Actual BeatMap and the Queue
     private BeatObjectSettings[] beatMap;
@@ -19,34 +22,31 @@ public class BeatMapManager : MonoBehaviour
 
     // Timing Related BeatMap Settings
     private float introLength;
-    private float defaultSpawnInterval;
-    private float defaultBeatSpeed;
-    private float spawnInterval;
+    private float beatSpeed;
     // ------------------------------
     private bool hasStarted = false;
     private bool hasBeats = true;
 
+    private float timeElapsed = 0.0f;
+    private float beatSpawnTime;
+
     void Start()
     {   
-        // Checks if you have a BeatMap Settings object
-        if (beatMapSettings)
+        string path = Utilities.beatMapsFilePath + beatMapName + ".json";
+
+        if (File.Exists(path))
         {   
-            // Init the private vars from BeatMap Settings
-            beatMap = beatMapSettings.GetBeatMap();
-            introLength = beatMapSettings.GetIntroLength();
-            defaultSpawnInterval = beatMapSettings.GetSpawnInterval();
-            defaultBeatSpeed = beatMapSettings.GetBeatSpeed();
-
-            // Just a simple check to ensure that the beatMap actually contains BeatObjects
-            if (beatMap.Length > 0)
-            {
-                // Conv the array to a queue.
-                beatMapQueue = new Queue<BeatObjectSettings>(beatMap); 
-            }
+            beatMapSettings = Utilities.JSONToBeatMapSettings(path);
+            Utilities.GetAudioClipFromMusicPath(beatMapSettings.audioClipFilePath, audioPlayer);
+            Initialize();
         }
+    }
 
-        // Init the AudioSource to play the song
-        audioPlayer = GetComponent<AudioSource>();
+    void Initialize()
+    {   
+        beatMap = beatMapSettings.beatMap;
+        introLength = beatMapSettings.introLength;
+        beatSpeed = beatMapSettings.beatSpeed;
     }
 
     void Update()
@@ -57,15 +57,15 @@ public class BeatMapManager : MonoBehaviour
             if (introLength <= 0)
             {
                 hasStarted = true;
-                audioPlayer.PlayOneShot(songToPlay);
-                SpawnBeat();
+                audioPlayer.Play();
+                beatSpawnTime = beatMapQueue.Peek().GetSpawnTime();
             } 
         }
         
         else if (hasBeats)
         {   
-            spawnInterval -= Time.deltaTime;
-            if (spawnInterval <= 0)
+            timeElapsed += Time.deltaTime;
+            if (timeElapsed >= beatSpawnTime)
             {
                 SpawnBeat();
             }
@@ -84,27 +84,13 @@ public class BeatMapManager : MonoBehaviour
             int currentBeatLaneIdx = currentBeatSetting.GetLane();
             LineRenderer currentLine = lanes[currentBeatLaneIdx];
 
-            // Get the speed that the beat moves at
-            float currentBeatSpeed = currentBeatSetting.GetSpeed();
-            if (currentBeatSpeed == 0)
-            {
-                currentBeatSpeed = defaultBeatSpeed;
-            }
-
-            // Get the time interval before the next beat
-            float currentSpawnInterval = currentBeatSetting.GetSpawnInterval();
-            if (currentSpawnInterval == 0)
-            {
-                spawnInterval = defaultSpawnInterval;
-            }
-            else
-            {
-                spawnInterval = currentSpawnInterval;
-            }
-            
             // Create a new beat and initialize it
             GameObject newBeat = Instantiate(beatPrefab);
-            newBeat.GetComponent<BeatObjectManager>().Initialize(currentLine, currentBeatSpeed);
+            newBeat.GetComponent<BeatObjectManager>().Initialize(currentLine, beatSpeed);
+
+            if (beatMapQueue.TryPeek(out BeatObjectSettings nextBeatSetting)) {
+                beatSpawnTime = nextBeatSetting.GetSpawnTime();
+            }
         }
 
         // If the beatmap is finished then we set hasBeats to false to stop spawning anything. 

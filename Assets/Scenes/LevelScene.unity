@@ -303,7 +303,9 @@ MonoBehaviour:
   - {fileID: 1979487930}
   - {fileID: 1371172521}
   beatPrefab: {fileID: 8139353244939965808, guid: 1f8d39654ea2a154cbb5e75b97c21f7d, type: 3}
-  beatMapContainer: {fileID: 11400000, guid: 3a0063a4f01ad4d45ac709f90b1f3896, type: 2}
+  audioPlayer: {fileID: 148050172}
+  beatMapSettings: {fileID: 0}
+  beatMapName: 
 --- !u!82 &148050172
 AudioSource:
   m_ObjectHideFlags: 0
@@ -315,7 +317,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 5d53c4a8d31d0a84e86fc3df500a653b, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6024,6 +6026,7 @@ GameObject:
   - component: {fileID: 815405618}
   - component: {fileID: 815405617}
   - component: {fileID: 815405621}
+  - component: {fileID: 815405622}
   m_Layer: 5
   m_Name: GUI
   m_TagString: Untagged
@@ -6131,6 +6134,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreGUI
   amountOfLives: 3
+--- !u!114 &815405622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815405616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c3072ddefa3c44cb412e326135797e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
 --- !u!1 &920623723
 GameObject:
   m_ObjectHideFlags: 0
@@ -6199,6 +6214,7 @@ LineRenderer:
   m_MaskInteraction: 0
   m_Positions:
   - {x: -9.5, y: 1, z: 0}
+  - {x: -9.1, y: 2.2, z: 0}
   - {x: -8.5, y: 4, z: 0}
   - {x: 3.5, y: 4, z: 0}
   m_Parameters:
@@ -7644,8 +7660,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
 --- !u!114 &1877278563
@@ -7662,6 +7678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHit
   delay: 20
   characterAnimator: {fileID: 1140853797}
+  scoreManager: {fileID: 815405622}
 --- !u!1 &1911013159
 GameObject:
   m_ObjectHideFlags: 0

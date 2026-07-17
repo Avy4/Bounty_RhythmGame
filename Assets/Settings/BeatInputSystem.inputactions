@@ -587,6 +587,67 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "BeatCreation",
+            "id": "d655ff8b-9e23-4cb7-b4ca-1113b4695166",
+            "actions": [
+                {
+                    "name": "AddBeat",
+                    "type": "Value",
+                    "id": "9efc7278-1674-44ca-b60c-f561788b7472",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4188fa69-7345-4ff4-9886-7093ac794142",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "AddBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5e3bb6f-af7a-4f0c-af3d-aeda766eb71d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "AddBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c410ee6-5a9f-4997-a65b-7730b3fe5adb",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "Scale(factor=3)",
+                    "groups": "",
+                    "action": "AddBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12b10da9-f780-4eed-b013-20be9698a7b9",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "AddBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

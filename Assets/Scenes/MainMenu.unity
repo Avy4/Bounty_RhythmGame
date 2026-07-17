@@ -388,7 +388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Story
+  m_text: Beatmaps
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1747052969a3b5d4b859f3fe229072bd, type: 2}
   m_sharedMaterial: {fileID: -5586806584839475461, guid: 1747052969a3b5d4b859f3fe229072bd, type: 2}
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 166534444}
   - component: {fileID: 166534443}
   m_Layer: 0
-  m_Name: StoryButton
+  m_Name: Beatmaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 1623765546}
   - component: {fileID: 1623765545}
   m_Layer: 0
-  m_Name: SettingsButton
+  m_Name: BeatmapSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Beatmap Creator
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1747052969a3b5d4b859f3fe229072bd, type: 2}
   m_sharedMaterial: {fileID: -5586806584839475461, guid: 1747052969a3b5d4b859f3fe229072bd, type: 2}
@@ -1708,8 +1708,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

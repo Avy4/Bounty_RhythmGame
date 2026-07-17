@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c959ffff519fe64e9f5495714413c02, type: 3}
-  m_Name: BeatMap
-  m_EditorClassIdentifier: Assembly-CSharp::BeatMap
-  beatMap:
-  - spawnLane: 0
-    individualSpawnInterval: 0
-    individualBeatSpeed: 0
-  introLength: 0
-  defaultSpawnInterval: 0.5
+  m_Name: BeatMapSettings
+  m_EditorClassIdentifier: Assembly-CSharp::BeatMapSettings
+  beatMap: []
+  introLength: 3
   defaultBeatSpeed: 3
-  song: {fileID: 8300000, guid: 5d53c4a8d31d0a84e86fc3df500a653b, type: 3}
+  audioClip: {fileID: 0}
+  audioClipFilePath: 
