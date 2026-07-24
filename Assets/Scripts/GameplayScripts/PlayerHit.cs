@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class PlayerHit : MonoBehaviour
 {
-    [SerializeField] int delay = 20;
+    [SerializeField] int delay = 5;
     [SerializeField] Animator characterAnimator;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] AudioSource hitSoundPlayer;
 
     private bool initalClick = false;
+    private GameObject currentOccupant = null;
     private CapsuleCollider2D beatDetectionCollider;
     void Start()
     {
@@ -32,13 +34,24 @@ public class PlayerHit : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {   
         GameObject hitObject = collision.gameObject;
+        
         if (hitObject.CompareTag("Beat"))
         {
-            BeatObjectManager manager = hitObject.GetComponent<BeatObjectManager>();
+            if (!currentOccupant)
+            {   
+                currentOccupant = hitObject;
 
-            manager.HitObject();
-            scoreManager.AddScore(manager.GetScoreToAdd());
+                BeatObjectManager manager = hitObject.GetComponent<BeatObjectManager>();
+                manager.HitObject();
+                // hitSoundPlayer.Play();
+                scoreManager.AddScore(manager.GetScoreToAdd());
+            }
         }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        currentOccupant = null;
     }
 
     

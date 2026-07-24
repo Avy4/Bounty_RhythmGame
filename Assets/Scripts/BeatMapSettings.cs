@@ -4,12 +4,20 @@ using UnityEngine;
 public class BeatMapSettings : ScriptableObject
 {
     [Header("Beatmap Settings")]
-    public BeatObjectSettings[] beatMap {get; set;}
-    public float introLength {get; set;}
-    public float beatSpeed {get; set;}  
-    public string beatMapName {get; set;}
-    public string audioClipFilePath {get; set;}
+    public BeatObjectSettings[] beatMap;
+    public float introLength;
+    public float beatSpeed;
+    public string beatMapName;
+    public string audioClipFilePath;
 
     // For Use in EDITOR ONLY
     [SerializeField] AudioClip audioClip; 
+
+    public void PrintFields()
+    {
+        Debug.Log(string.Format(
+            "Audio File Path: {0}, Intro Length: {1}, Beat Speed: {2}, BeatMap Name: {3}", 
+            audioClipFilePath, introLength, beatSpeed, beatMapName
+        ));
+    }
 }

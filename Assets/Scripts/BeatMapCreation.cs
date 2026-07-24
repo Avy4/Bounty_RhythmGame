@@ -18,7 +18,6 @@ public class BeatMapCreation
     public void AddBeat(BeatObjectSettings newBeatObject)
     {
         beatMap.Add(newBeatObject);
-
     }
 
     public void SaveBeatMap()

@@ -7,6 +7,7 @@ public class BeatObjectManager : MonoBehaviour
     const String TAGOUTER = "Outer", TAGMIDDLE = "Middle", TAGINNER = "Inner";
     const String PARTICLEEMITTERNAME = "Particle System";
     private ParticleEmitter particlerEmitter;
+    private ScoreManager scoreManager;
 
     // BeatObject Settings
     private float speed;
@@ -47,6 +48,8 @@ public class BeatObjectManager : MonoBehaviour
         // Set starting pos, sub idx by 1, set next pos, sub idx by 1
         transform.position = lerpPoints[currentPointIdx--] + startingPos;
         nextPoint = lerpPoints[currentPointIdx--] + startingPos;
+
+        scoreManager = GameObject.Find("GUI").GetComponent<ScoreManager>();
     }
 
     void Update()
@@ -67,7 +70,7 @@ public class BeatObjectManager : MonoBehaviour
                 gameObject.SetActive(false);
                 if (!hit)
                 {
-                    // ScoreManager.AddScore(scoreToAdd);
+                    scoreManager.AddScore(0);
                     particlerEmitter.ChangeAndEmitParticle(emitterIdx);
                 }
             }

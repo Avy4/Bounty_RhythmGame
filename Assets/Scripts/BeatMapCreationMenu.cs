@@ -17,10 +17,13 @@ public class BeatMapCreationMenu : MonoBehaviour
     [SerializeField] BeatMapCreation newBeatMap;
     public void StartButton()
     {   
-        string musicFilePath = Application.persistentDataPath + "/Music/" + songFileNameInput.text;
+        string musicFilePath = "/Music/" + songFileNameInput.text;
+        string applicationMusicFilePath = Application.persistentDataPath + musicFilePath;
 
-        if (File.Exists(musicFilePath))
+        Debug.Log(applicationMusicFilePath);
+        if (File.Exists(applicationMusicFilePath))
         {   
+            
             float introTime = 1f;
             float beatSpeed = 3f;
             string beatmapName = "Untitled";
@@ -39,8 +42,10 @@ public class BeatMapCreationMenu : MonoBehaviour
 
             spawnToPerfectMoveTime = Utilities.GetBeatSpawnOffset(exampleLane, beatSpeed);
             newBeatMap = new BeatMapCreation(musicFilePath, introTime, beatSpeed, beatmapName);
-
-            StartCoroutine(Utilities.GetAudioClipFromMusicPath(musicFilePath, audioSource));
+            var await = StartCoroutine(Utilities.GetAudioClipFromMusicPath(applicationMusicFilePath, audioSource, true));
+            Debug.Log("reached");
+            Debug.Log(audioSource.clip);
+            audioSource.Play();
         }
     }
 
@@ -64,14 +69,13 @@ public class BeatMapCreationMenu : MonoBehaviour
 
     void OnAddBeat(InputValue inputValue)
     {   
-        Debug.Log("ajdasj");
         var lane = inputValue.Get<float>();
 
         if (audioSource.isPlaying)
         {
             float beatTiming = audioSource.time;
             
-            if (beatTiming> spawnToPerfectMoveTime)
+            if (beatTiming > spawnToPerfectMoveTime)
             {
                 BeatObjectSettings temp = new BeatObjectSettings();
                 float spawnTiming = beatTiming - spawnToPerfectMoveTime;
@@ -91,8 +95,7 @@ public class BeatMapCreationMenu : MonoBehaviour
                         temp.Init(BeatObjectSettings.Lane.FOUR, spawnTiming);
                         break;
                     default:
-                        // Should Never Be Reached
-                        break;
+                        return;
                 }
 
                 newBeatMap.AddBeat(temp);

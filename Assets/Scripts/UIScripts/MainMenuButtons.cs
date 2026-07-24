@@ -4,25 +4,25 @@ using UnityEngine.SceneManagement;
 public class MainMenuButtons : MonoBehaviour
 {
 
-    private string levelScene = "LevelScene";
+    private string beatMapSelection = "BeatMapSelection";
+    private string beatMapCreation = "BeatmapCreator";
     private string mainMenu = "MainMenu";  
     public void StartButton()
     {
-        SceneManager.LoadSceneAsync(levelScene);
+        SceneManager.LoadSceneAsync(beatMapSelection);
     }
 
-    void StoryButton()
+    public void BeatMapButton()
     {
-        
-    }
-
-    void SettingsButton()
-    {
-        
+        SceneManager.LoadSceneAsync(beatMapCreation);
     }
 
     public void MainMenuButton()
     {
         SceneManager.LoadSceneAsync(mainMenu);
+    }
+
+    public void Reset() {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine.Rendering;
 
 public class BeatMapManager : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class BeatMapManager : MonoBehaviour
     [SerializeField] BeatMapSettings beatMapSettings;
     [SerializeField] string beatMapName;
     
-
     // The Actual BeatMap and the Queue
     private BeatObjectSettings[] beatMap;
     private Queue<BeatObjectSettings> beatMapQueue;
@@ -32,12 +30,13 @@ public class BeatMapManager : MonoBehaviour
 
     void Start()
     {   
-        string path = Utilities.beatMapsFilePath + beatMapName + ".json";
+        string beatSettingsPath = Utilities.beatMapsFilePath + Utilities.currentBeatmap;
+        // string beatSettingsPath = Utilities.beatMapsFilePath + beatMapName;
+        beatMapSettings = ScriptableObject.CreateInstance<BeatMapSettings>();
 
-        if (File.Exists(path))
+        if (File.Exists(beatSettingsPath))
         {   
-            beatMapSettings = Utilities.JSONToBeatMapSettings(path);
-            Utilities.GetAudioClipFromMusicPath(beatMapSettings.audioClipFilePath, audioPlayer);
+            beatMapSettings = Utilities.JSONToBeatMapSettings(beatSettingsPath);
             Initialize();
         }
     }
@@ -47,6 +46,9 @@ public class BeatMapManager : MonoBehaviour
         beatMap = beatMapSettings.beatMap;
         introLength = beatMapSettings.introLength;
         beatSpeed = beatMapSettings.beatSpeed;
+        beatMapQueue = new Queue<BeatObjectSettings>(beatMap);
+
+        var await = StartCoroutine(Utilities.GetAudioClipFromMusicPath(Application.persistentDataPath + beatMapSettings.audioClipFilePath, audioPlayer, false));
     }
 
     void Update()
@@ -55,7 +57,7 @@ public class BeatMapManager : MonoBehaviour
         {
             introLength -= Time.deltaTime;
             if (introLength <= 0)
-            {
+            {   
                 hasStarted = true;
                 audioPlayer.Play();
                 beatSpawnTime = beatMapQueue.Peek().GetSpawnTime();

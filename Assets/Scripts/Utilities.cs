@@ -2,21 +2,19 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
-using System.Collections.Generic;
-
 public static class Utilities
 {   
     public static string beatMapsFilePath = Application.persistentDataPath + "/BeatMaps/";
-    public static List<AudioClip> audioClips = new List<AudioClip>();
-    public static BeatMapSettings JSONToBeatMapSettings(string filepath)
+    public static string currentBeatmap;
+    public static BeatMapSettings JSONToBeatMapSettings(string filePath)
     {   
-        string filePath = beatMapsFilePath + filepath + ".json";
-
         if (File.Exists(filePath))
         {
             string JSONData = File.ReadAllText(filePath);
+
             BeatMapSettings BMPS = ScriptableObject.CreateInstance<BeatMapSettings>();
             JsonUtility.FromJsonOverwrite(JSONData, BMPS);
+
             return BMPS;
         }
 
@@ -30,9 +28,10 @@ public static class Utilities
         File.WriteAllText(filePath, JSONData);
     }
 
-    public static IEnumerator GetAudioClipFromMusicPath(string path, AudioSource source)
-    {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(path, AudioType.MPEG))
+    public static IEnumerator GetAudioClipFromMusicPath(string filePath, AudioSource source, bool shouldPlay)
+    {   
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(filePath, AudioType.MPEG))
         {
             yield return www.SendWebRequest();
 
@@ -44,17 +43,15 @@ public static class Utilities
             else
             {  
                 AudioClip newSong = DownloadHandlerAudioClip.GetContent(www);
-
-                if (!audioClips.Contains(newSong))
-                {
-                    audioClips.Add(newSong);
-                }
-
                 source.clip = newSong;
-                source.Play();
+
+                if (shouldPlay)
+                {
+                    source.Play();
+                }
             }
         }
-    }
+    } 
 
     public static float GetBeatSpawnOffset(LineRenderer lane, float beatSpeed) {
         return GetLineLength(lane) / beatSpeed;
