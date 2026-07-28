@@ -6,6 +6,7 @@ public static class Utilities
 {   
     public static string beatMapsFilePath = Application.persistentDataPath + "/BeatMaps/";
     public static string currentBeatmap;
+    public static float currentSongLength;
     public static BeatMapSettings JSONToBeatMapSettings(string filePath)
     {   
         if (File.Exists(filePath))
@@ -43,7 +44,11 @@ public static class Utilities
             else
             {  
                 AudioClip newSong = DownloadHandlerAudioClip.GetContent(www);
+
                 source.clip = newSong;
+                Debug.Log(source.clip.length);
+                Debug.Log(currentSongLength);
+                currentSongLength = source.clip.length;
 
                 if (shouldPlay)
                 {

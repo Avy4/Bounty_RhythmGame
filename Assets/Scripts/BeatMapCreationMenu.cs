@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using UnityEngine.InputSystem;
+using UnityEditor.Search;
 
 public class BeatMapCreationMenu : MonoBehaviour
 {   
@@ -11,16 +12,17 @@ public class BeatMapCreationMenu : MonoBehaviour
     [SerializeField] TMP_InputField beatmapNameInput;
     [SerializeField] TMP_InputField songFileNameInput;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] Visualiser visualiser;
     // ALWAYS USE LANE ONE. IT HAS 4 INDICES INSTEAD OF THREE.
     [SerializeField] LineRenderer exampleLane;
     private float spawnToPerfectMoveTime;
+    private float offset = .15f;
     [SerializeField] BeatMapCreation newBeatMap;
     public void StartButton()
     {   
         string musicFilePath = "/Music/" + songFileNameInput.text;
         string applicationMusicFilePath = Application.persistentDataPath + musicFilePath;
 
-        Debug.Log(applicationMusicFilePath);
         if (File.Exists(applicationMusicFilePath))
         {   
             
@@ -42,10 +44,7 @@ public class BeatMapCreationMenu : MonoBehaviour
 
             spawnToPerfectMoveTime = Utilities.GetBeatSpawnOffset(exampleLane, beatSpeed);
             newBeatMap = new BeatMapCreation(musicFilePath, introTime, beatSpeed, beatmapName);
-            var await = StartCoroutine(Utilities.GetAudioClipFromMusicPath(applicationMusicFilePath, audioSource, true));
-            Debug.Log("reached");
-            Debug.Log(audioSource.clip);
-            audioSource.Play();
+            StartCoroutine(Utilities.GetAudioClipFromMusicPath(applicationMusicFilePath, audioSource, true));  
         }
     }
 
@@ -73,12 +72,17 @@ public class BeatMapCreationMenu : MonoBehaviour
 
         if (audioSource.isPlaying)
         {
+            if (visualiser.songLength == default)
+            {
+                visualiser.songLength = Utilities.currentSongLength;    
+            }
+
             float beatTiming = audioSource.time;
             
             if (beatTiming > spawnToPerfectMoveTime)
             {
                 BeatObjectSettings temp = new BeatObjectSettings();
-                float spawnTiming = beatTiming - spawnToPerfectMoveTime;
+                float spawnTiming = beatTiming - spawnToPerfectMoveTime - offset;
 
                 switch (lane)
                 {
@@ -99,6 +103,7 @@ public class BeatMapCreationMenu : MonoBehaviour
                 }
 
                 newBeatMap.AddBeat(temp);
+                visualiser.Visualise(temp);
             } 
         }
     }
