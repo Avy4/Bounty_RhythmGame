@@ -18,6 +18,14 @@ public class BeatMapCreationMenu : MonoBehaviour
     private float spawnToPerfectMoveTime;
     private float offset = .15f;
     [SerializeField] BeatMapCreation newBeatMap;
+
+    void Update()
+    {
+        if (visualiser.songLength == default && audioSource.isPlaying)
+        {
+            visualiser.songLength = Utilities.currentSongLength; 
+        }
+    }
     public void StartButton()
     {   
         string musicFilePath = "/Music/" + songFileNameInput.text;
@@ -44,7 +52,8 @@ public class BeatMapCreationMenu : MonoBehaviour
 
             spawnToPerfectMoveTime = Utilities.GetBeatSpawnOffset(exampleLane, beatSpeed);
             newBeatMap = new BeatMapCreation(musicFilePath, introTime, beatSpeed, beatmapName);
-            StartCoroutine(Utilities.GetAudioClipFromMusicPath(applicationMusicFilePath, audioSource, true));  
+            StartCoroutine(Utilities.GetAudioClipFromMusicPath(applicationMusicFilePath, audioSource, true));
+            visualiser.SetOffset(introTime); 
         }
     }
 
@@ -72,11 +81,6 @@ public class BeatMapCreationMenu : MonoBehaviour
 
         if (audioSource.isPlaying)
         {
-            if (visualiser.songLength == default)
-            {
-                visualiser.songLength = Utilities.currentSongLength;    
-            }
-
             float beatTiming = audioSource.time;
             
             if (beatTiming > spawnToPerfectMoveTime)
